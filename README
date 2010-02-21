@@ -1,0 +1,50 @@
+Emacs Hashapass
+===============
+
+This is an elisp version of the algorithm described at http://www.hashapass.com
+for generating passwords from a token and master password.
+
+Usage
+-----
+
+;; In your .emacs, make sure whereever you put the libs is in your load path:
+(setq load-path (cons "/path/to/hashapass" load-path))
+
+;; Load hashapass
+(require 'hashapass)
+
+;; Use it
+;; M-x insert-hashapass
+
+;; Bind it
+;; (global-set-key (kbd "C-c h") 'insert-hashapass)
+
+Misc
+----
+
+You can use this in other code by using the non-interactive base function:
+
+(hashapass token password)
+
+Utility, interactive functions are defined for inserting into the main buffer
+and displaying the generated password in the minibuf:
+
+(insert-hashapas token password) ;; Insert into current buffer
+(show-hashapass token password)  ;; Show in minibuffer
+
+Ideas
+-----
+
+- Make the master password encrypted somehere to avoid having to type it
+  everytime.
+
+Credits
+-------
+
+I borrowed hmac-sha1.el from:
+
+http://github.com/psanford/emacs-oauth
+
+Hashapass algorithm defined at:
+
+http://hashapass.com/info.html
